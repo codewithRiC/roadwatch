@@ -21,13 +21,15 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-PRE_URL = os.getenv("PRE_URL")
+PRE_URL = os.getenv("PRE_URL", "")
 # PROD_DIR = os.getenv("PROD_DIR")
 # MEDIA_URL = PRE_URL + "/media/"
 # MEDIA_ROOT = os.path.join(PROD_DIR, "media")
 STATIC_URL = PRE_URL + "/static/"
-STATIC_ROOT = os.path.join("./staticfiles/")
-STATICFILES_DIRS = (BASE_DIR.joinpath("../dist/"),) #./staticfiles/"),)
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_DIRS = [
+    BASE_DIR / "../dist",  # For built frontend files
+]
 
 
 # Quick-start development settings - unsuitable for production
@@ -168,7 +170,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+# Static URL is defined above with PRE_URL
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
