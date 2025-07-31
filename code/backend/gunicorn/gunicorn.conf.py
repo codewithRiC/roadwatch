@@ -1,0 +1,10 @@
+workers = 4
+syslog = True
+bind = ["10.10.0.173:85"] # ["smlab.niser.ac.in:85"] # ["10.10.0.173:80"]
+umask = 0
+loglevel = "info"
+user = "rishi"
+group = "rishi"
+accesslog = "/home/rishi/roadwatch/code/backend/logs/gunicorn_roadwatch_access.log"
+access_log_format = '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s" "%({X-Real-IP}i)s"'
+errorlog = "/home/rishi/roadwatch/code/backend/logs/gunicorn_roadwatch_error.log"

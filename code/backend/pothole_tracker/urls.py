@@ -19,10 +19,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+PRE_URL = settings.PRE_URL
+admin.site.site_url = "/" + settings.PRE_URL
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),
-    path('', include('potholes.urls')),
+    path(PRE_URL + 'admin/', admin.site.urls),
+    path(PRE_URL + 'accounts/', include('accounts.urls')),
+    path(PRE_URL + '', include('potholes.urls')),
 ]
 
 # Serve media files during development

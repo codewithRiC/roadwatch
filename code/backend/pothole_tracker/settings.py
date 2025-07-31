@@ -21,6 +21,14 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+PRE_URL = os.getenv("PRE_URL")
+# PROD_DIR = os.getenv("PROD_DIR")
+# MEDIA_URL = PRE_URL + "/media/"
+# MEDIA_ROOT = os.path.join(PROD_DIR, "media")
+STATIC_URL = PRE_URL + "/static/"
+STATIC_ROOT = os.path.join("./staticfiles/")
+STATICFILES_DIRS = (BASE_DIR.joinpath("../dist/"),) #./staticfiles/"),)
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -29,7 +37,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 import socket
 
@@ -59,10 +67,12 @@ network_ips = get_network_ips()
 print(f"🌐 Django will accept requests from IPs: {network_ips}")
 
 ALLOWED_HOSTS = [
-    'localhost', 
-    '127.0.0.1', 
-    '0.0.0.0',
-    '*',  # Allow all hosts for development - CHANGE THIS FOR PRODUCTION
+    'localhost',
+    '127.0.0.1',
+    '10.10.0.173',
+    '103.160.128.66',
+    'smlab.niser.ac.in',
+    # '*',  # Allow all hosts for development - CHANGE THIS FOR PRODUCTION
 ] + network_ips
 
 
@@ -206,6 +216,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'admin@potholetracker.local'
 
 # Login/Logout URLs
-LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/admin/'
-LOGOUT_REDIRECT_URL = '/'
+# LOGIN_URL = '/accounts/login/'
+# LOGIN_REDIRECT_URL = '/admin/'
+# LOGOUT_REDIRECT_URL = '/'
