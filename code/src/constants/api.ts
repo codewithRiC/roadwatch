@@ -1,6 +1,6 @@
 // API configuration and base URL
 export const API_CONFIG = {
-    baseURL: '/api', // Use proxy path - Vite will forward to backend
+    baseURL: '/project/roadwatch/api', // Use full path with PRE_URL
     timeout: 10000,
     headers: {
         'Content-Type': 'application/json',
