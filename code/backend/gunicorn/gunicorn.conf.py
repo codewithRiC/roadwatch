@@ -1,10 +1,10 @@
 workers = 4
 syslog = True
-bind = ["10.10.0.173:85"] # ["smlab.niser.ac.in:85"] # ["10.10.0.173:80"]
+bind = ["0.0.0.0:80"] # Change according to the server
 umask = 0
 loglevel = "info"
-user = "rishi"
-group = "rishi"
-accesslog = "/home/rishi/roadwatch/code/backend/logs/gunicorn_roadwatch_access.log"
+user = "user"  #change according to user name in the server
+group = "user"  #change according to requirement
+accesslog = "/home/user/roadwatch/code/backend/logs/gunicorn_roadwatch_access.log"
 access_log_format = '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s" "%({X-Real-IP}i)s"'
-errorlog = "/home/rishi/roadwatch/code/backend/logs/gunicorn_roadwatch_error.log"
+errorlog = "/home/user/roadwatch/code/backend/logs/gunicorn_roadwatch_error.log"
