@@ -30,7 +30,7 @@ console.log(`🔧 Vite will use relative URLs for API calls (network-agnostic)`)
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/project/roadwatch/', // Use relative paths for deployment
+  base: '/project/iwatchroad/', // Use relative paths for deployment
   build: {
     outDir: 'dist',
     sourcemap: false,
