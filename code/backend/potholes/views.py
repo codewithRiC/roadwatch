@@ -145,6 +145,31 @@ class PotholeViewSet(viewsets.ModelViewSet):
         
         return Response(stats)
     
+    @action(detail=True, methods=['get'])
+    def frame_image(self, request, pk=None):
+        """
+        Get the frame image for a specific pothole.
+        Returns only the frame_image_base64 field for performance.
+        """
+        try:
+            pothole = self.get_object()
+            if pothole.frame_image_base64:
+                return Response({
+                    'id': pothole.id,
+                    'frame_number': pothole.frame_number,
+                    'frame_image_base64': pothole.frame_image_base64
+                })
+            else:
+                return Response(
+                    {'error': 'No frame image available for this pothole'}, 
+                    status=status.HTTP_404_NOT_FOUND
+                )
+        except Pothole.DoesNotExist:
+            return Response(
+                {'error': 'Pothole not found'}, 
+                status=status.HTTP_404_NOT_FOUND
+            )
+    
     @action(detail=True, methods=['post'])
     def update_status(self, request, pk=None):
         """

@@ -80,8 +80,12 @@ function App() {
     setSeverityFilter(severity);
   };
 
-  const handleDateRangeChange = (start: Date, end: Date) => {
-    setDateRange({ start, end });
+  const handleDateRangeChange = (start: Date | null, end: Date | null) => {
+    if (start && end) {
+      setDateRange({ start, end });
+    } else {
+      setDateRange(undefined); // Clear date range to show all potholes
+    }
   };
 
   const handleRetry = () => {

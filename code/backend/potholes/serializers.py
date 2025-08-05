@@ -33,7 +33,7 @@ class PotholeSerializer(serializers.ModelSerializer):
 
 class PotholeListSerializer(serializers.ModelSerializer):
     """
-    Lightweight serializer for listing potholes (without heavy fields like description).
+    Lightweight serializer for listing potholes (without heavy fields like frame images).
     """
     location_string = serializers.ReadOnlyField()
     
@@ -49,10 +49,10 @@ class PotholeListSerializer(serializers.ModelSerializer):
             'severity',
             'timestamp',
             'image',
-            'frame_image_base64',
-            'frame_number',
+            'frame_number',  # Keep frame number for reference, but not the base64 data
             'road_c_date',
             'contractor',
+            'description',  # Add description back for popup
         ]
 
 

@@ -34,3 +34,14 @@ if settings.DEBUG:
 
 # Serve static files - for both development and production
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# Serve assets from staticfiles directory
+from django.views.static import serve
+from django.urls import re_path
+import os
+
+urlpatterns += [
+    re_path(r'^' + PRE_URL + r'assets/(?P<path>.*)$', serve, {
+        'document_root': os.path.join(settings.STATIC_ROOT, 'assets'),
+    }),
+]

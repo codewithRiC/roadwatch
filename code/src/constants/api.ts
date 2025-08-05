@@ -12,6 +12,7 @@ export const API_CONFIG = {
 export const API_ENDPOINTS = {
     potholes: '/potholes/',
     potholeDetail: (id: number) => `/potholes/${id}/`,
+    potholeFrameImage: (id: number) => `/potholes/${id}/frame_image/`,
     potholesInArea: '/potholes/in_area/',
     potholesStats: '/potholes/stats/',
     updateStatus: (id: number) => `/potholes/${id}/update_status/`,
